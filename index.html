@@ -1,5 +1,222 @@
 <!doctype html>
-<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Powi</title>
-<style>body{margin:0;font:16px/1.6 -apple-system,system-ui,sans-serif;color:#0E1B2C;background:#fff}main{max-width:720px;margin:0 auto;padding:32px 16px}a{color:inherit;text-decoration-color:#27DF80}
-@media (prefers-color-scheme:dark){body{color:#E8EDF3;background:#0E1B2C}}</style></head>
-<body><main><h1>Powi</h1><p>Damga topla, ödül kazan.</p><ul><li><a href="gizlilik.html">Gizlilik politikası</a></li><li><a href="hesap-silme.html">Hesap silme</a></li></ul></main></body></html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Powi · Damga topla, ödül kazan</title>
+<meta name="description" content="Powi ile sevdiğin kafe, restoran ve dükkanlardaki tüm sadakat kartların tek uygulamada. Kasada QR'ını göster, damganı al, kartın dolunca ödülünü kap.">
+<meta property="og:title" content="Powi · Damga topla, ödül kazan">
+<meta property="og:description" content="Tüm sadakat kartların tek uygulamada. İşletmeler için Powi Business ile dijital damga kartı.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://powiapp.com/">
+<meta name="theme-color" content="#27DF80">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='14' fill='%2327DF80'/%3E%3Cg transform='translate(28 28.5) scale(.95) translate(-28 -27.5)'%3E%3Ccircle cx='28' cy='17' r='5' fill='none' stroke='%230E1B2C' stroke-width='3'/%3E%3Cpath d='M25 22h6l2 9H23z' fill='%230E1B2C'/%3E%3Crect x='15' y='31' width='26' height='6' rx='2' fill='%230E1B2C'/%3E%3Crect x='17' y='40' width='22' height='3' rx='1.5' fill='%230E1B2C'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #27DF80; --green-soft: #E9FBF2; --green-ink: #0A6B3B;
+    --ink: #0E1B2C; --muted: #5B6676; --line: #E6EAF0; --bg: #FFFFFF; --surface: #F5F7FA;
+    --night: #0E1B2C; --night-ink: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #E8EDF3; --muted: #9AA6B5; --line: #22324A; --bg: #0B1522; --surface: #0F1C2C; --green-soft: #12301F; --green-ink: #7CF0B4; }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 "Nunito", -apple-system, system-ui, "Segoe UI", Roboto, sans-serif; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 22px; text-decoration: none; }
+  .brand svg { width: 34px; height: 34px; border-radius: 10px; }
+  nav a { text-decoration: none; font-weight: 700; color: var(--muted); margin-left: 20px; font-size: 15px; }
+  nav a:hover { color: var(--ink); }
+  @media (max-width: 560px) { nav .opt { display: none; } }
+
+  .hero { padding: 72px 0 56px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } .hero { padding-top: 40px; } }
+  .eyebrow { display: inline-block; background: var(--green-soft); color: var(--green-ink); font-weight: 800; font-size: 14px; padding: 6px 12px; border-radius: 99px; }
+  h1 { font-size: clamp(38px, 6vw, 60px); line-height: 1.05; font-weight: 900; letter-spacing: -1px; margin: 18px 0 16px; }
+  h1 em { font-style: normal; color: var(--green); }
+  .lead { font-size: 19px; color: var(--muted); max-width: 520px; margin: 0 0 28px; }
+  .stores { display: flex; flex-wrap: wrap; gap: 12px; }
+  .store { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: var(--bg); border-radius: 14px; padding: 10px 18px; text-decoration: none; min-width: 180px; }
+  .store small { display: block; font-size: 12px; opacity: .7; font-weight: 600; line-height: 1.2; }
+  .store b { display: block; font-size: 17px; line-height: 1.2; }
+  .store svg { width: 24px; height: 24px; flex: none; }
+  .note { font-size: 14px; color: var(--muted); margin-top: 14px; }
+
+  /* Telefon çizimi */
+  .phone { width: 300px; max-width: 100%; margin: 0 auto; aspect-ratio: 9/18.5; border-radius: 44px; background: #0B0B0B; padding: 12px; box-shadow: 0 30px 60px -20px rgba(14,27,44,.35); }
+  .screen { height: 100%; border-radius: 34px; background: #F5F7FA; padding: 22px 16px; display: flex; flex-direction: column; gap: 12px; color: #0E1B2C; overflow: hidden; }
+  .screen .top { font-weight: 900; font-size: 20px; }
+  .card { background: #fff; border-radius: 18px; padding: 14px; box-shadow: 0 1px 0 #E6EAF0; }
+  .card .name { font-weight: 800; font-size: 15px; }
+  .card .sub { font-size: 12px; color: #5B6676; }
+  .dots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; margin-top: 10px; }
+  .dots i { aspect-ratio: 1; border-radius: 50%; border: 2px dashed #CBD3DE; }
+  .dots i.on { border: 0; background: #27DF80; }
+  .reward { background: #0E1B2C; color: #fff; border-radius: 18px; padding: 14px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; }
+  .reward span { background: #27DF80; color: #0E1B2C; border-radius: 99px; padding: 4px 10px; font-size: 12px; }
+
+  section { padding: 64px 0; }
+  .alt { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  h2 { font-size: clamp(28px, 4vw, 38px); font-weight: 900; letter-spacing: -.5px; margin: 0 0 10px; }
+  .sec-lead { color: var(--muted); font-size: 18px; margin: 0 0 36px; max-width: 620px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+  .step { border: 1px solid var(--line); border-radius: 22px; padding: 24px; background: var(--bg); }
+  .num { width: 40px; height: 40px; border-radius: 12px; background: var(--green); color: #0E1B2C; font-weight: 900; display: grid; place-items: center; margin-bottom: 14px; }
+  .step h3 { margin: 0 0 6px; font-size: 20px; font-weight: 800; }
+  .step p { margin: 0; color: var(--muted); }
+
+  .biz { background: #0B0B0B; color: #fff; border-radius: 32px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  @media (max-width: 860px) { .biz { grid-template-columns: 1fr; padding: 32px 22px; border-radius: 24px; } }
+  .biz h2 { color: #fff; }
+  .biz .sec-lead { color: #B7C0CC; margin-bottom: 24px; }
+  .biz ul { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
+  .biz li { display: flex; gap: 12px; align-items: flex-start; }
+  .biz li::before { content: ""; flex: none; width: 22px; height: 22px; border-radius: 50%; background: #27DF80 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%230B0B0B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat; margin-top: 3px; }
+  .btn { display: inline-block; background: #27DF80; color: #0B0B0B; font-weight: 900; text-decoration: none; border-radius: 99px; padding: 14px 24px; }
+  .biz-logo { display: flex; align-items: center; gap: 12px; font-weight: 900; font-size: 22px; margin-bottom: 18px; }
+  .biz-logo svg { width: 44px; height: 44px; border-radius: 12px; border: 1px solid #27DF8066; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat { background: #161616; border: 1px solid #262626; border-radius: 20px; padding: 20px; }
+  .stat b { display: block; font-size: 34px; font-weight: 900; color: #27DF80; line-height: 1.1; }
+  .stat span { color: #B7C0CC; font-size: 14px; }
+
+  .faq { display: grid; gap: 12px; max-width: 760px; }
+  details { border: 1px solid var(--line); border-radius: 18px; padding: 16px 20px; background: var(--bg); }
+  summary { font-weight: 800; cursor: pointer; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  footer { padding: 40px 0 56px; color: var(--muted); font-size: 15px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 28px; justify-content: space-between; align-items: center; }
+  footer a { text-decoration: none; font-weight: 700; }
+  footer a:hover { color: var(--ink); }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Powi ana sayfa">
+      <svg viewBox="0 0 56 56" aria-hidden="true"><rect width="56" height="56" fill="#27DF80"/><g transform="translate(28 28.5) scale(.95) translate(-28 -27.5)"><circle cx="28" cy="17" r="5" fill="none" stroke="#0E1B2C" stroke-width="3"/><path d="M25 22h6l2 9H23z" fill="#0E1B2C"/><rect x="15" y="31" width="26" height="6" rx="2" fill="#0E1B2C"/><rect x="17" y="40" width="22" height="3" rx="1.5" fill="#0E1B2C"/></g></svg>
+      Powi
+    </a>
+    <nav>
+      <a class="opt" href="#nasil">Nasıl çalışır</a>
+      <a href="#isletmeler">İşletmeler için</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Kâğıt kart devri bitti</span>
+        <h1>Damga topla,<br><em>ödül kazan.</em></h1>
+        <p class="lead">Sevdiğin kafe, restoran ve dükkanlardaki tüm sadakat kartların tek uygulamada. Kasada QR'ını göster, damgan anında kartına işlensin.</p>
+        <div class="stores">
+          <span class="store" aria-label="Google Play'de yakında">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 2.8v18.4c0 .5.5.8.9.6l15.9-9.2c.4-.3.4-.9 0-1.2L4.9 2.2c-.4-.2-.9.1-.9.6z"/></svg>
+            <span><small>Yakında</small><b>Google Play</b></span>
+          </span>
+          <span class="store" aria-label="App Store'da yakında">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.2 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3.1 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.7-3.9zM14 5.4c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.5 2.8-1.3z"/></svg>
+            <span><small>Yakında</small><b>App Store</b></span>
+          </span>
+        </div>
+        <p class="note">İlk olarak İstanbul'da. Yayına çıktığımızda ilk sen haberdar ol: <a href="mailto:destek@powiapp.com?subject=Powi%20yay%C4%B1nda%20haber%20ver">destek@powiapp.com</a></p>
+      </div>
+      <div aria-hidden="true">
+        <div class="phone"><div class="screen">
+          <div class="top">Kartlarım</div>
+          <div class="card"><div class="name">Fincan Üsküdar</div><div class="sub">7 / 9 damga · Ücretsiz latte</div>
+            <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+          <div class="reward">Ücretsiz Türk kahvesi <span>Hazır</span></div>
+          <div class="card"><div class="name">Kısıklı Köftecisi</div><div class="sub">2 / 10 damga · Ücretsiz porsiyon</div>
+            <div class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="card"><div class="name">Sahil Kahvesi</div><div class="sub">8 / 10 damga · Ücretsiz kahve</div>
+            <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="nasil" class="alt">
+    <div class="wrap">
+      <h2>Nasıl çalışır?</h2>
+      <p class="sec-lead">Kart taşımak, damga kaybetmek, cüzdanı şişirmek yok. Üç adım yeter.</p>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Keşfet</h3><p>Yakınındaki Powi'li mekanları listede ya da haritada gör, sevdiklerinin kartına katıl.</p></div>
+        <div class="step"><div class="num">2</div><h3>QR'ını göster</h3><p>Kasada uygulamadaki QR'ı okut, damgan saniyesinde kartına işlensin. QR her 30 saniyede yenilenir.</p></div>
+        <div class="step"><div class="num">3</div><h3>Ödülünü kap</h3><p>Kartın dolunca ödülün hazır: ücretsiz kahve, indirim ya da işletmenin sunduğu ne varsa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="isletmeler">
+    <div class="wrap">
+      <div class="biz">
+        <div>
+          <div class="biz-logo">
+            <svg viewBox="0 0 56 56" aria-hidden="true"><rect width="56" height="56" fill="#0B0B0B"/><g transform="translate(28 28.5) scale(.95) translate(-28 -27.5)"><circle cx="28" cy="17" r="5" fill="none" stroke="#27DF80" stroke-width="3"/><path d="M25 22h6l2 9H23z" fill="#27DF80"/><rect x="15" y="31" width="26" height="6" rx="2" fill="#27DF80"/><rect x="17" y="40" width="22" height="3" rx="1.5" fill="#27DF80"/></g></svg>
+            Powi Business
+          </div>
+          <h2>Müşterilerin geri gelsin.</h2>
+          <p class="sec-lead">Kâğıt damga kartını dijitale taşı. Kurulum birkaç dakika, ek donanım gerekmez: telefonun yeter.</p>
+          <ul>
+            <li>Müşterinin QR'ını okut, tek dokunuşla damga ver.</li>
+            <li>Damga sayısını ve ödülü kendin belirle.</li>
+            <li>2 kat damga, "Seni özledik" ve "Hoş geldin" kampanyaları kur.</li>
+            <li>Günlük damgaları, ödülleri ve geri gelen müşterileri panelden takip et.</li>
+            <li>Tekrar kullanılamayan QR ve günlük damga sınırıyla kötüye kullanıma karşı korumalı.</li>
+          </ul>
+          <a class="btn" href="mailto:destek@powiapp.com?subject=Powi%20Business%20ba%C5%9Fvurusu">İşletmeni ekle</a>
+        </div>
+        <div class="stats" aria-hidden="true">
+          <div class="stat"><b>30 sn</b><span>QR her yarım dakikada yenilenir</span></div>
+          <div class="stat"><b>0 ₺</b><span>Kart basımı, donanım, kurulum ücreti</span></div>
+          <div class="stat"><b>1 dokunuş</b><span>Kasada damga vermek için</span></div>
+          <div class="stat"><b>Anlık</b><span>Panelde günlük damga ve ödül takibi</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Sık sorulanlar</h2>
+      <p class="sec-lead">Aklına takılan başka bir şey olursa <a href="mailto:destek@powiapp.com">destek@powiapp.com</a> adresine yaz.</p>
+      <div class="faq">
+        <details><summary>Powi ücretli mi?</summary><p>Hayır. Powi müşteriler için tamamen ücretsiz.</p></details>
+        <details><summary>Şifre gerekiyor mu?</summary><p>Hayır. E-posta adresine gelen tek kullanımlık kodla giriş yaparsın.</p></details>
+        <details><summary>Konumumu kaydediyor musunuz?</summary><p>Hayır. Konumun yalnızca uygulama açıkken ve izin verirsen yakındaki mekanları göstermek için kullanılır, saklanmaz. Ayrıntılar <a href="/gizlilik">gizlilik politikasında</a>.</p></details>
+        <details><summary>Hesabımı nasıl silerim?</summary><p>Uygulamada Profil → Hesabımı sil adımıyla anında silebilirsin. <a href="/hesap-silme">Hesap silme</a> sayfasında ayrıntılar var.</p></details>
+        <details><summary>İşletmem Powi'ye nasıl katılır?</summary><p>Powi Business uygulamasını indir, işletmeni ekle. Başvurun onaylanınca müşterilerin seni haritada görür.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Powi</span>
+    <div class="links">
+      <a href="/gizlilik">Gizlilik politikası</a>
+      <a href="/hesap-silme">Hesap silme</a>
+      <a href="mailto:destek@powiapp.com">destek@powiapp.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
