@@ -35,6 +35,9 @@
   .brand svg { width: 34px; height: 34px; border-radius: 10px; }
   nav a { text-decoration: none; font-weight: 700; color: var(--muted); margin-left: 20px; font-size: 15px; }
   nav a:hover { color: var(--ink); }
+  nav a.login { color: var(--ink); border: 2px solid var(--ink); border-radius: 99px; padding: 7px 14px; }
+  nav a.login:hover { background: var(--ink); color: #fff; }
+  .btn.ghost { background: transparent; border: 2px solid currentColor; color: inherit; margin-left: 10px; padding: 12px 22px; }
   @media (max-width: 560px) { nav .opt { display: none; } }
 
   .hero { padding: 72px 0 56px; }
@@ -112,7 +115,8 @@
     </a>
     <nav>
       <a class="opt" href="#nasil">Nasıl çalışır</a>
-      <a href="#isletmeler">İşletmeler için</a>
+      <a class="opt" href="#isletmeler">İşletmeler için</a>
+      <a class="login" href="/isletme/">İşletme girişi</a>
     </nav>
   </div>
 </header>
@@ -177,10 +181,13 @@
             <li>Müşterinin QR'ını okut, tek dokunuşla damga ver.</li>
             <li>Damga sayısını ve ödülü kendin belirle.</li>
             <li>2 kat damga, "Seni özledik" ve "Hoş geldin" kampanyaları kur.</li>
-            <li>Günlük damgaları, ödülleri ve geri gelen müşterileri panelden takip et.</li>
+            <li>Fırsat ve duyuru yayınla: "Latte 259,99 ₺ yerine 160,99 ₺".</li>
+            <li>İşletme panelinden kampanya sonuçlarını, yoğun saatleri ve geri gelen müşterileri takip et.</li>
+            <li>Kasiyerlerine ayrı hesap aç; yalnızca QR okutabilsinler.</li>
             <li>Tekrar kullanılamayan QR ve günlük damga sınırıyla kötüye kullanıma karşı korumalı.</li>
           </ul>
           <a class="btn" href="mailto:destek@powiapp.com?subject=Powi%20Business%20ba%C5%9Fvurusu">İşletmeni ekle</a>
+          <a class="btn ghost" href="/isletme/">İşletme girişi</a>
         </div>
         <div class="stats" aria-hidden="true">
           <div class="stat"><b>30 sn</b><span>QR her yarım dakikada yenilenir</span></div>
@@ -211,6 +218,7 @@
   <div class="wrap">
     <span>© 2026 Powi</span>
     <div class="links">
+      <a href="/isletme/">İşletme girişi</a>
       <a href="/gizlilik">Gizlilik politikası</a>
       <a href="/hesap-silme">Hesap silme</a>
       <a href="mailto:destek@powiapp.com">destek@powiapp.com</a>
